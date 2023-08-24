@@ -4,10 +4,15 @@
 ## Funciones
 
 - Detecta automaticamente cuando estas conectado al VPN de HackTheBox, y te pone en estado de "Espera" por RichPresence.
+  
   ![](https://i.imgur.com/Yu5C6Yi.png)
+  
 - Detecta automaticamente cuando estas conectado a una maquina de HackTheBox.
+  
   ![](https://i.imgur.com/Wvn9x3m.png)
+  
 - Detecta automaticamente si has conseguido la User Flag o la Root Flag
+  
   ![](https://i.imgur.com/yJrS94P.png)
 
 ### Uso y requisitos
