@@ -19,6 +19,7 @@
 
 Solamente requiere de `PyPresence`
 
+Aqui va el Client ID de Discord y tu Token generado de HTB (en profile settings):
 ![image](https://github.com/Pirrandi/htb-presence/assets/39172875/0ee75f6f-c7fb-416e-9766-4e0266453bea)
 
 
