@@ -5,7 +5,7 @@
 
 - Detecta automaticamente cuando estas conectado al VPN de HackTheBox, y te pone en estado de "Espera" por RichPresence.
   
-  ![](https://i.imgur.com/Yu5C6Yi.png)
+  ![](https://i.imgur.com/hOIYxLv.png)
   
 - Detecta automaticamente cuando estas conectado a una maquina de HackTheBox.
   
