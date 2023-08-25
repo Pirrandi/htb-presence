@@ -6,6 +6,21 @@ from pypresence import Presence
 client_id = '1125543074861432864'
 htb_api_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiNTY5MzM0NDAyNTFjNGU1NDBkODYwNzZjNzU3M2YzZDI2NGM0MWVkMjJlNGU0ZmVkM2MzZWE3Yzc0YzY1NmFjNzhiOWNlOTVhZGZjNTg5ODIiLCJpYXQiOjE2OTI4NjAwNzYuOTMzNzA1LCJuYmYiOjE2OTI4NjAwNzYuOTMzNzA4LCJleHAiOjE3MDg0MTU2NzYuOTI2NzQ1LCJzdWIiOiIxNTMzOTkxIiwic2NvcGVzIjpbIjJmYSJdfQ.zhBoe0uaFGy-KsMV4C5sITLxEOOFtXaJTNmYlmvyxtlnXyJ8tOJvL1x2TqfMN0N9SjvTgeqhBXg9-jZm-q-uuO5V1EY4H6CqLfUPdyr-1OZdSG7M3dLds92nGes96_NHeDC9Wi7bavbPH6q5vofG1t0EySb-_L-e2oei0sUIllYa8dLwieCsTe9xZcATrXUORHv6DNS1C9V4Ywf1VaA1mS_UmS0gp5TSI4nkjpV9djciUlbzjbr4CS1A4RqpaifrGKzHkJoCTV3_jeh6shk9Du1F9YfY4JWu7NYvQ9Na6MBbLTCr5Q1FsRVYRsIMOAKnayFZSrAE1fiSvAauTRXSV-GN-u6KSMM_5Xr2c8xF-9UGxhOYavmdqHFbWGFfXt4rV-Gxo8TYR6iSE-ItusXVBLcFlzSGOqApqCcKiV1J5cJo8_DENC4lnpAc3uMZOE7KKTK30kSUkh4F5Ii-1EJ5TPbLwFGG8AWxlVL0wpYR4eXnDj-1e_3ZSQC5gwl6-ymTalX2JvHZW4VxiAtTLxKTAYeEDXiGxD5b0M4f5pHvULGRKE59R9WQHvdjf1JU9KCLRyRgG9GCDu3m_UAb4odQ8UBmRDHSWJOhGLSJgci0PtrL1rDf1ud2qIsqTqZZNurgCH52j-8M2gCGN0O5B0og6CcAb0-jSh4GB7UXLVs4fjs'
 
+import psutil
+
+def is_discord_open():
+    for process in psutil.process_iter(attrs=['pid', 'name']):
+        if 'discord' in process.info['name'].lower():
+            return True
+    return False
+
+if is_discord_open():
+    print("Discord está abierto.")
+else:
+    print("Discord no está abierto.")
+
+while is_discord_open():
+    
 RPC = Presence(client_id)
 RPC.connect()
 
