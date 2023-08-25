@@ -18,7 +18,9 @@
 
 ### Uso y requisitos
 
-Solamente requiere de `PyPresence`
+- `PyPresence`
+- `psutils`
+- `requests`
 
 Aqui va el Client ID de Discord y tu Token generado de HTB (en profile settings):
 
