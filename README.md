@@ -1,6 +1,6 @@
 <h1 align="center">HTB RichPresence</h1>
 <h3 align="center">RichPresence para HackTheBox, este proyecto NO es oficial.</h3>
-<h4>Sientente libre de hacer alguna critica constructiva, y/o aportar al desarrollo.</h4>
+<p align="center">Sientente libre de hacer alguna critica constructiva, y/o aportar al desarrollo.</p>
 
 ## Funciones
 
