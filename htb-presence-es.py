@@ -42,8 +42,8 @@ if __name__ == "__main__":
 
 
 # Configuración de las APIs de Discord Rich Presence y Hack The Box
-client_id = 'client_id'
-htb_api_token = 'htb_api'
+client_id = '1125543074861432864' # Client ID por defecto, NO cambiar a menos que quieras configurar tu propia Aplicacion/Bot de Discord.
+htb_api_token = 'HTB Token here'
 RPC = Presence(client_id)
 RPC_status=0
 connection=0
@@ -71,7 +71,7 @@ while test==1:
         htb_user_api = 'https://www.hackthebox.com/api/v4/user/info'
         htb_connection_api = 'https://www.hackthebox.com/api/v4/user/connection/status'
 
-
+        
 
         headers = {
             'User-Agent': 'HTB Discord Rich Presence',
@@ -113,7 +113,6 @@ while test==1:
                     RPC_status=1
                     print("Conectado a RPC...")
                 
-                
                 if response_machine.status_code == 200:
                     data_machine = response_machine.json()
                     data_user = response_user.json()
@@ -128,7 +127,9 @@ while test==1:
                         user_avatar = user['avatar']
                         user_avatar = f"https://www.hackthebox.com{user['avatar']}"
                         print("User Info obtenida")
-                        if discord_status==1 and connection == "1" and RPC_status == 1 and active_machine_name == None:
+                        print(discord_status)
+                        print(RPC_status)
+                        if discord_status==1 and connection == True and RPC_status == 1 and active_machine_name == None:
                             print("Actualizando Rich Presence...")
                             RPC.update(
                                     details=f"Conectado a HTB",
