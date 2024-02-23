@@ -16,8 +16,8 @@
   
   ![](https://i.imgur.com/yJrS94P.png)
 
-### Uso y requisitos
-
+## Uso y requisitos
+#### Es necesario ejecutarlo en la misma maquina que tiene instalado Discord. (Actualmente funciona solo en Linux)
 - `PyPresence`
 - `psutils`
 - `requests`
