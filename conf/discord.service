@@ -1,0 +1,11 @@
+[Unit]
+Description=Start Discord minimized
+
+[Service]
+ExecStart=/usr/bin/discord --start-minimized
+User=root
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target
+
