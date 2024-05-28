@@ -1,0 +1,4 @@
+psutil==5.9.4
+psutil==5.9.8
+pypresence==4.3.0
+Requests==2.32.2
