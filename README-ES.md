@@ -23,6 +23,7 @@ Para poder funcionar, `htb-presence.py` necesita las siguientes librerías:
 - `PyPresence-htb` Fork para este proyecto https://github.com/Pirrandi/pypresence-htb
 - `psutil`
 - `requests`
+- `python-dotenv`
 
 Las cuales pueden ser instaladas usando `pip3 install -r requirements.txt`.
 
