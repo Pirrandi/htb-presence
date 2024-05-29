@@ -20,7 +20,8 @@
 ## Requirements
 #### It's necessary to execute it on the machine where Discord is running.
 In order to work, `htb-presence.py` needs the following libraries:
-- `PyPresence`
+
+- `PyPresence-htb` Fork for this project https://github.com/Pirrandi/pypresence-htb
 - `psutil`
 - `requests`
 
