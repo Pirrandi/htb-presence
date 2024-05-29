@@ -3,7 +3,7 @@ Description=HTB Presence
 
 [Service]
 ExecStart=/usr/local/bin/htb-presence.py
-User=root
+User=
 
 [Install]
 WantedBy=default.target
