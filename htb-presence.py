@@ -3,9 +3,8 @@
 ## htb-presence.py - RichPresence for HackTheBox on Discord
 ## Author: @Pirrandi (https://github.com/Pirrandi)
 ## Translator: @wh0crypt (https://github.com/wh0crypt)
+## Additional Contributions: @sealldev (https://github.com/sealldeveloper)
 
-from translations.en import *  # English translations
-#from translations.es import * # Traducciones en Español
 from pypresence import Presence
 import psutil
 import requests
@@ -18,6 +17,17 @@ from dotenv import load_dotenv
 from tempfile import gettempdir
 from pathlib import Path
 from platform import system
+
+# Load environment variables
+load_dotenv()
+
+# Load appropriate language
+lang = os.getenv('LANG') if os.getenv('LANG') else 'EN' # default is english
+if lang == 'EN':
+    from translations.en import *
+elif lang == 'ES':
+    from translations.es import *
+
 
 lock_file = os.path.join(Path("/tmp" if system() == "Darwin" else gettempdir()),'test.py.lock')
 
@@ -51,8 +61,7 @@ if __name__ == "__main__":
     atexit.register(release_lock)
     acquire_lock()
 
-# Load environment variables
-load_dotenv()
+
 
 # HackTheBox and Discord APIs configuration
 client_id = os.getenv('CLIENT_ID') if os.getenv('CLIENT_ID') else '1125543074861432864' # default is '1125543074861432864' 

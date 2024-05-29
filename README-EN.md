@@ -29,7 +29,7 @@ Which can be installed using `pip3 install -r requirements.txt`.
 
 
 ## Configuration
-In order to work, `htb-presence.py` needs access to the user's HackTheBox account. That is achieved by using an *App Token*, which can be created from the HackTheBox's Public Information section inside the Profile Settings tab. Once the Token is created, it must be pasted into the variable `htb_api_token`.
+In order to work, `.env.example` needs to be renamed to `.env` and needs access to the user's HackTheBox account. That is achieved by using an __App Token__, which can be created from the HackTheBox's Public Information section inside the Profile Settings tab. Once the Token is created, it must be pasted into the variable `HTB_API_TOKEN` in the `.env`.
 
 ### Self-hosted Discord Bot
 In case you want to host your own Discord Bot, you can create it from the Discord Developer Portal and even include your own images. If you decide to do so, the `client_id` variable must be set to the new bot's ID Token, **not user's**. Otherwise, leave it as it is.
@@ -39,7 +39,7 @@ In case you want to host your own Discord Bot, you can create it from the Discor
 ![image](https://github.com/Pirrandi/htb-presence/assets/39172875/0ee75f6f-c7fb-416e-9766-4e0266453bea)
 
 ### Translations
-In the first two lines of the file `htb-presence.py` Spanish and English strings are imported, being this second option the default one. In case of wanting to change them to the Spanish ones, the line `from translations.en import *` must be commented and the line `from translations.es import *` must be uncommented.
+Translations exist for both English (`EN`) and Spanish (`ES`), the default language is English but can be changed in the `.env` by changing the `LANG` key to either `ES` or `EN`.
 
 
 ## Service Creation and Startup Execution
@@ -61,3 +61,4 @@ This RichPresence was built using the **[HTB v4 API Documentation](https://githu
 ## Acknowledgments
 - [@Pirrandi](https://github.com/Pirrandi) - Main script creation and Spanish Docs
 - [@wh0crypt](https://github.com/wh0crypt) - Setup script creation and English Docs
+- [@sealldev](https://github.com/sealldeveloper) - Additional code improvements
