@@ -1,1 +1,3 @@
 env/
+.env
+translations/__pycache__/

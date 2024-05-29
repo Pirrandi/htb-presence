@@ -3,9 +3,8 @@
 ## htb-presence.py - RichPresence for HackTheBox on Discord
 ## Author: @Pirrandi (https://github.com/Pirrandi)
 ## Translator: @wh0crypt (https://github.com/wh0crypt)
+## Additional Contributions: @sealldev (https://github.com/sealldeveloper)
 
-from translations.en import *  # English translations
-#from translations.es import * # Traducciones en Español
 from pypresence import Presence
 import psutil
 import requests
@@ -14,9 +13,23 @@ import os
 import sys
 import atexit
 import traceback
+from dotenv import load_dotenv
+from tempfile import gettempdir
+from pathlib import Path
+from platform import system
+
+# Load environment variables
+load_dotenv()
+
+# Load appropriate language
+lang = os.getenv('LANG') if os.getenv('LANG') else 'EN' # default is english
+if lang == 'EN':
+    from translations.en import *
+elif lang == 'ES':
+    from translations.es import *
 
 
-lock_file = '/tmp/test.py.lock'
+lock_file = os.path.join(Path("/tmp" if system() == "Darwin" else gettempdir()),'test.py.lock')
 
 def acquire_lock():
     if os.path.exists(lock_file):
@@ -48,9 +61,16 @@ if __name__ == "__main__":
     atexit.register(release_lock)
     acquire_lock()
 
+
+
 # HackTheBox and Discord APIs configuration
-client_id = '1125543074861432864' # Default Client ID, do NOT change unless you want to configure your own Discord App/Bot
-htb_api_token = 'HTB Token Here'
+client_id = os.getenv('CLIENT_ID') if os.getenv('CLIENT_ID') else '1125543074861432864' # default is '1125543074861432864' 
+htb_api_token = os.getenv('HTB_API_TOKEN') if os.getenv('HTB_API_TOKEN') else None
+if not htb_api_token or htb_api_token == 'HTB_TOKEN_HERE':
+    print(htb_api_token_not_set)
+    sys.exit()
+RPC_status=0
+RPC = Presence(client_id)
 connection=0
 
 test=1
@@ -62,7 +82,6 @@ while test==1:
         return 0
     discord_status= is_discord_open()
     print(discord_status)
-
     if is_discord_open():
         print(discord_running_str)
     else:
@@ -91,7 +110,6 @@ while test==1:
                 'url': url2_str
             }
         ]
-
         def closeDiscord_clearRPC_status():
             global RPC_status
             if discord_status==0:
@@ -111,7 +129,6 @@ while test==1:
                 response_machine = requests.get(htb_machine_api, headers=headers)
                 response_user = requests.get(htb_user_api, headers=headers)
                 response_connection = requests.get(htb_connection_api, headers=headers)
-
                 if RPC_status == 0:
                     print(connecting_rpc_str)
 
