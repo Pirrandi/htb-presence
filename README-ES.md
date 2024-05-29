@@ -59,5 +59,34 @@ Este RichPresence se ha hecho con la **[HTB v4 API Documentation](https://github
 
 
 ## Reconocimientos
-- [@Pirrandi](https://github.com/Pirrandi) - Creación del Script Principal y Doc. en Español
-- [@wh0crypt](https://github.com/wh0crypt) - Creación del Script de Configuración y Doc. en Inglés
+<table>
+    <tr>
+        <td align="center" valign="top" width="14.28%">
+            <a href="https://github.com/Pirrandi">
+                <img src="https://avatars.githubusercontent.com/Pirrandi?v=3?s=100" width="100px;" alt="Pirrandi" />
+                <br />
+                <sub><b>Pirrandi</b>
+            </a>
+            <br />
+            <sub>Creación del Script Principal y Doc. en Español
+        </td>
+        <td align="center" valign="top" width="14.28%">
+            <a href="https://github.com/wh0crypt">
+                <img src="https://avatars.githubusercontent.com/wh0crypt?v=3?s=100" width="100px;" alt="wh0crypt" />
+                <br />
+                <sub><b>wh0crypt</b>
+            </a>
+            <br />
+            <sub>Creación del Script de Configuración y Doc. en Inglés
+        </td>
+        <td align="center" valign="top" width="14.28%">
+            <a href="https://github.com/sealldeveloper">
+                <img src="https://avatars.githubusercontent.com/sealldeveloper?v=3?s=100" width="100px;" alt="sealldeveloper" />
+                <br />
+                <sub><b>sealldeveloper</b>
+            </a>
+            <br />
+            <sub>Mejoras de código adicionales
+        </td>
+    </tr>
+</table>
