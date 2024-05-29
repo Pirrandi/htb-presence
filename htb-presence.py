@@ -13,6 +13,8 @@ import time
 import os
 import sys
 import atexit
+import traceback
+
 
 lock_file = '/tmp/test.py.lock'
 
@@ -48,9 +50,7 @@ if __name__ == "__main__":
 
 # HackTheBox and Discord APIs configuration
 client_id = '1125543074861432864' # Default Client ID, do NOT change unless you want to configure your own Discord App/Bot
-htb_api_token = 'HTB Token here'
-RPC = Presence(client_id)
-RPC_status=0
+htb_api_token = 'HTB Token Here'
 connection=0
 
 test=1
@@ -114,6 +114,7 @@ while test==1:
 
                 if RPC_status == 0:
                     print(connecting_rpc_str)
+
                     RPC.connect()
                     RPC_status=1
                     print(connected_rpc_str)
@@ -220,10 +221,9 @@ while test==1:
                             return 1
                     return 0
                 discord_status= is_discord_open()   
-
-                if discord_status==1 and connection=="0":
-                    print(cleaning_rpc_str)
-                    
+                
+                if discord_status==1 and connection==False:
+                    print(cleaning_rpc_str)              
                     RPC.clear()
                     continue
                 if discord_status==0:
