@@ -202,8 +202,7 @@ while test==1:
                                 large_text="Hack The Box",
                                 small_image=user_avatar,
                                 small_text=user_nickname,
-                                state=f"User: {user_flag} | Root: {root_flag}",
-                                start=start_time
+                                state=f"User: {user_flag} | Root: {root_flag}"
                         )
                         
                         # Check if the machine has changed
@@ -219,8 +218,7 @@ while test==1:
                                 large_text="Hack The Box",
                                 small_image=user_avatar,
                                 small_text=user_nickname,
-                                state=f"User: {user_flag} | Root: {root_flag}",
-                                start=start_time
+                                state=f"User: {user_flag} | Root: {root_flag}"
                             )
                     else:
                         active_machine_name = None
