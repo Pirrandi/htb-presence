@@ -36,7 +36,7 @@ En el caso de que se quiera hostear un Bot de Discord propio, puede crearse desd
 
 **AVISO**: Tener un bot auto-hosteado NO afecta a la privacidad, ya que se usa el ID público del bot, como si fuera el ID público de un usuario. El ID se puede obtener haciendo click derecho sobre un usuario o bot con el Modo Desarrollador de Discord activado en Configuraciones > Avanzado > Modo Desarrollador.
 
-![image](https://github.com/Pirrandi/htb-presence/assets/39172875/0ee75f6f-c7fb-416e-9766-4e0266453bea)
+![image](https://i.imgur.com/79Insfc.png)
 
 ### Traducciones
 Existen traducciones tanto para inglés (`EN`) como para español (`ES`), el idioma predeterminado es inglés pero se puede cambiar en el archivo .env modificando la clave `LANGUAGE` a `ES` o `EN`.
