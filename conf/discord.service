@@ -3,7 +3,7 @@ Description=Start Discord minimized
 
 [Service]
 ExecStart=/usr/bin/discord --start-minimized
-User=root
+User=
 Environment=DISPLAY=:0
 
 [Install]

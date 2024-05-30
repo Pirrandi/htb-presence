@@ -6,6 +6,10 @@
 # Copy htb-presence.py to /usr/local/bin/
 sudo cp ./htb-presence.py /usr/local/bin/
 
+# Modify the service files with the users' username
+sed -i "s/^User=/User=$USER/" "conf/discord.service"
+sed -i "s/^User=/User=$USER/" "conf/htb-presence.service"
+
 # Copy service files to /etc/systemd/system/
 sudo cp ./conf/discord.service /etc/systemd/system/
 sudo cp ./conf/htb-presence.service /etc/systemd/system/
