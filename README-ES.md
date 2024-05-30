@@ -29,7 +29,7 @@ Las cuales pueden ser instaladas usando `pip3 install -r requirements.txt`.
 
 
 ## Configuración
-Para poder funcionar, `htb-presence.py` necesita acceso a la cuenta de HackTheBox del usuario. Esto se consigue usando un *App Token*, que puede ser creado desde la sección de Public Information dentro de la pestaña de Profile Settings de HackTheBox. Una vez que se haya creado el Token, debe ser pegado dentro de la variable `htb_api_token`.
+Para que funcione, `.env.example` debe ser renombrado a `.env` y necesita acceso a la cuenta de HackTheBox del usuario. Esto se logra utilizando un Token de Aplicación, que puede ser creado desde la sección de Información Pública de HackTheBox dentro de la pestaña de Configuración del Perfil. Una vez creado el Token, debe ser pegado en la variable `HTB_API_TOKEN` en el archivo `.env`.
 
 ### Bot de Discord Auto-Hosteado
 En el caso de que se quiera hostear un Bot de Discord propio, puede crearse desde el Portal de Desarrolladores de Discord e incluso incluir imágenes propias. Si se decide hacerlo, la variable `client_id` debe cambiarse al Token ID del nuevo bot, **no al del usuario**. Si no, no modificar.
@@ -39,7 +39,7 @@ En el caso de que se quiera hostear un Bot de Discord propio, puede crearse desd
 ![image](https://github.com/Pirrandi/htb-presence/assets/39172875/0ee75f6f-c7fb-416e-9766-4e0266453bea)
 
 ### Traducciones
-En las dos primeras líneas del archivo `htb-presence.py` se importan las cadenas de texto en español e inglés, estando esta segunda opción por defecto. En caso de querer cadenas de texto en español, se debe comentar la línea `from translations.en import *` y descomentar la línea `from translations.es import *`.
+Existen traducciones tanto para inglés (`EN`) como para español (`ES`), el idioma predeterminado es inglés pero se puede cambiar en el archivo .env modificando la clave `LANGUAGE` a `ES` o `EN`.
 
 
 ## Creación de los Servicio y Ejecución en el Arranque
