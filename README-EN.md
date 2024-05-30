@@ -37,7 +37,7 @@ In case you want to host your own Discord Bot, you can create it from the Discor
 
 **WARNING**: Having a self-hosted bot does NOT affect privacy, since the Bot's Public ID is being used, as if it were an User's Public ID. The ID can be retrieved right-clicking an user or bot with the Discord Developer Mode enabled in Settings > Advanced > Developer Mode.
 
-![image](https://github.com/Pirrandi/htb-presence/assets/39172875/0ee75f6f-c7fb-416e-9766-4e0266453bea)
+![image](https://i.imgur.com/79Insfc.png)
 
 ### Translations
 Translations exist for both English (`EN`) and Spanish (`ES`), the default language is English but can be changed in the `.env` by changing the `LANG` key to either `ES` or `EN`.
