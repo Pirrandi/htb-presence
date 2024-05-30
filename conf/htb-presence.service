@@ -2,8 +2,8 @@
 Description=HTB Presence
 
 [Service]
-ExecStart=/usr/local/bin/htb-presence.py
-User=
+ExecStart=/usr/local/bin/htb-presence/htb-presence.py
+User=pirrapirrapirrapirrapirra
 
 [Install]
 WantedBy=default.target

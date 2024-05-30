@@ -22,7 +22,7 @@ from platform import system
 load_dotenv()
 
 # Load appropriate language
-lang = os.getenv('LANG') if os.getenv('LANG') else 'EN' # default is english
+lang = os.getenv('LANGUAGE') if os.getenv('LANGUAGE') else 'EN' # default is english
 if lang == 'EN':
     from translations.en import *
 elif lang == 'ES':
