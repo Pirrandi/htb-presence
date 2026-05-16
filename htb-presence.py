@@ -64,7 +64,9 @@ if __name__ == "__main__":
 
 
 # HackTheBox and Discord APIs configuration
-client_id = os.getenv('CLIENT_ID') if os.getenv('CLIENT_ID') else '1125543074861432864' # default is '1125543074861432864' 
+client_id = os.getenv('CLIENT_ID') if os.getenv('CLIENT_ID') else '1125543074861432864' # default is '1125543074861432864'
+htb_base_url = 'https://labs.hackthebox.com'
+htb_api_base_url = f'{htb_base_url}/api/v4'
 htb_api_token = os.getenv('HTB_API_TOKEN') if os.getenv('HTB_API_TOKEN') else None
 if not htb_api_token or htb_api_token == 'HTB_TOKEN_HERE':
     print(htb_api_token_not_set)
@@ -72,6 +74,13 @@ if not htb_api_token or htb_api_token == 'HTB_TOKEN_HERE':
 RPC_status=0
 RPC = Presence(client_id)
 connection=0
+
+def htb_url(value):
+    if not value:
+        return value
+    if value.startswith('http://') or value.startswith('https://'):
+        return value
+    return f'{htb_base_url}{value}'
 
 test=1
 while test==1:
@@ -81,17 +90,15 @@ while test==1:
                 return 1
         return 0
     discord_status= is_discord_open()
-    print(discord_status)
-    if is_discord_open():
-        print(discord_running_str)
-    else:
-        print(discord_not_running_str)
+    if not discord_status:
+        time.sleep(30)
+        continue
 
     while is_discord_open():
         # HackTheBox API configuration
-        htb_machine_api = 'https://www.hackthebox.com/api/v4/machine/active'
-        htb_user_api = 'https://www.hackthebox.com/api/v4/user/info'
-        htb_connection_api = 'https://www.hackthebox.com/api/v4/user/connection/status'
+        htb_machine_api = f'{htb_api_base_url}/machine/active'
+        htb_user_api = f'{htb_api_base_url}/user/info'
+        htb_connection_api = f'{htb_api_base_url}/user/connection/status'
 
         headers = {
             'User-Agent': 'HTB Discord Rich Presence',
@@ -123,18 +130,15 @@ while test==1:
             try:
                 is_discord_open()
                 
-                time.sleep(1)
+                time.sleep(30)
                 closeDiscord_clearRPC_status()
                 # Retrieve the Active Machine's information from HackTheBox
                 response_machine = requests.get(htb_machine_api, headers=headers)
                 response_user = requests.get(htb_user_api, headers=headers)
                 response_connection = requests.get(htb_connection_api, headers=headers)
                 if RPC_status == 0:
-                    print(connecting_rpc_str)
-
                     RPC.connect()
                     RPC_status=1
-                    print(connected_rpc_str)
                 
                 if response_machine.status_code == 200:
                     data_machine = response_machine.json()
@@ -145,42 +149,35 @@ while test==1:
                     if data_machine:
                         user = data_user['info']
                         user_nickname = user['name']
-                        user_avatar = user['avatar']
-                        user_avatar = f"https://www.hackthebox.com{user['avatar']}"
-                        print(user_info_retrieved_str)
-                        print(discord_status)
-                        print(RPC_status)
+                        user_avatar = htb_url(user['avatar'])
                         if discord_status==1 and connection == True and RPC_status == 1 and active_machine_name == None:
-                            print(updating_rp_str)
                             RPC.update(
                                     details=connected_htb_str,
                                     state=waiting_state_str,
                                     large_image=htb_logo,
                                     large_text="Hack The Box",
-                                    small_image=user_avatar,
                                     small_text=user_nickname,
                                     buttons=buttons
                                 )                        
                         
                         machine = data_machine['info']
                         machine_name = machine['name']
-                        machine_avatar = machine['avatar']
-                        machine_avatar = f"https://www.hackthebox.com{machine['avatar']}"
-                        print(machine_info_retrieved_str)
-                        
+                        machine_avatar = htb_url(machine['avatar'])
                         ###
-                        htb_get_api = f"https://www.hackthebox.com/api/v4/profile/activity/{user['id']}"
+                        htb_get_api = f"{htb_base_url}/api/v5/user/profile/activity/{user['id']}?per_page=5"
                         response_activity = requests.get(htb_get_api, headers=headers)
                         data_activity = response_activity.json()
-                        print(apis_connected_str)
 
                         pwned = "🟢"
                         no_pwned = "🔴"
                         has_root = False
                         has_user = False
+                        activity_records = data_activity.get("data", [])
 
-                        for record in data_activity["profile"]["activity"]:
+                        for record in activity_records:
                             if record["name"] == machine_name:
+                                if record.get("avatar"):
+                                    machine_avatar = htb_url(record["avatar"])
                                 if record["type"] == "root":
                                     has_root = True
                                 elif record["type"] == "user":
@@ -195,12 +192,10 @@ while test==1:
 
                         else:
                             user_flag = no_pwned
-                        print(machine_found_str)
                         RPC.update(
                                 details=machine_str+machine_name,
                                 large_image=machine_avatar,
                                 large_text="Hack The Box",
-                                small_image=user_avatar,
                                 small_text=user_nickname,
                                 state=f"User: {user_flag} | Root: {root_flag}"
                         )
@@ -216,19 +211,14 @@ while test==1:
                                 details=machine_str+machine_name,
                                 large_image=machine_avatar, 
                                 large_text="Hack The Box",
-                                small_image=user_avatar,
                                 small_text=user_nickname,
                                 state=f"User: {user_flag} | Root: {root_flag}"
                             )
                     else:
                         active_machine_name = None
-                        print(cleaning_rpc_str)
                         RPC.clear()
-                else:
-                    print(request_error_str+response.status_code)
-                
+
             except Exception as e:
-                print(active_machine_warning_str)
                 active_machine_name = None
                 def is_discord_open():
                     for process in psutil.process_iter(attrs=['pid', 'name']):
@@ -238,10 +228,9 @@ while test==1:
                 discord_status= is_discord_open()   
                 
                 if discord_status==1 and connection==False:
-                    print(cleaning_rpc_str)              
                     RPC.clear()
                     continue
                 if discord_status==0:
-                    print(discord_not_running_str)
-                    continue               
+                    time.sleep(30)
+                    continue
 release_lock()           
