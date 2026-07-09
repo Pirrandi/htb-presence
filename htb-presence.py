@@ -68,7 +68,7 @@ client_id = os.getenv('CLIENT_ID') if os.getenv('CLIENT_ID') else '1125543074861
 htb_base_url = 'https://labs.hackthebox.com'
 htb_api_base_url = f'{htb_base_url}/api/v4'
 htb_api_token = os.getenv('HTB_API_TOKEN') if os.getenv('HTB_API_TOKEN') else None
-if not htb_api_token or htb_api_token == 'HTB_TOKEN_HERE':
+if not htb_api_token or htb_api_token == 'INSERT_YOUR_API_KEY':
     print(htb_api_token_not_set)
     sys.exit()
 RPC_status=0
