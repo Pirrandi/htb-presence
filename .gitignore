@@ -1,3 +1,22 @@
+# Virtual environments
 env/
+venv/
+.venv/
+
+# Python build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+
+# Local secrets
 .env
-translations/__pycache__/
+config.env
+
+# Local agent tooling
+.atl/
