@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "htb-presence"
+dynamic = ["version"]
+description = "Discord Rich Presence for Hack The Box (non-official)."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "Pirrandi" },
+    { name = "wh0crypt" },
+    { name = "sealldeveloper" },
+]
+keywords = ["hackthebox", "htb", "discord", "rich-presence"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "pypresence>=4.3",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+htb-presence = "htb_presence.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Pirrandi/htb-presence"
+Issues = "https://github.com/Pirrandi/htb-presence/issues"
+
+[tool.hatch.version]
+path = "src/htb_presence/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/htb_presence"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
