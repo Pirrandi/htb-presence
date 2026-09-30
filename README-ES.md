@@ -178,3 +178,7 @@ Desarrollado con la **[documentación comunitaria de la API de HTB](https://gith
 ## Aviso
 
 Este es un proyecto **no oficial**. No está afiliado, respaldado ni soportado por Hack The Box ni por Discord.
+
+## Licencia
+
+Publicado bajo la [licencia MIT](LICENSE).

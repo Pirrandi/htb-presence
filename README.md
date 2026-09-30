@@ -178,3 +178,7 @@ Built using the community **[HTB API documentation](https://github.com/Propolisa
 ## Disclaimer
 
 This is a **non-official** project. It is not affiliated with, endorsed by or supported by Hack The Box or Discord.
+
+## License
+
+Released under the [MIT License](LICENSE).

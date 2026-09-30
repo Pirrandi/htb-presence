@@ -7,6 +7,8 @@ name = "htb-presence"
 dynamic = ["version"]
 description = "Discord Rich Presence for Hack The Box (non-official)."
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.9"
 authors = [
     { name = "Pirrandi" },
